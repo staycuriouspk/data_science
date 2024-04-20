@@ -12,7 +12,7 @@
 4. [Creating a New Environment](#creating-a-new-environment)
 5. [Testing Your Environment](#testing-your-environment)
 6. [Register Your Environment](#register-your-environment)
-7. [Testing Your Environment](#testing-your-registered-environment)
+7. [Testing Your Registered Environment](#testing-your-registered-environment)
 
 
 ## Introduction
