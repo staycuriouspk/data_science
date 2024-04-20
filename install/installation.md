@@ -93,7 +93,7 @@ To ensure that your environment is set up correctly, you can run the following c
 conda install -y jupyter
 ```
 2. The following command registers your environment.
-``
+```
 python -m ipykernel install --user --name pytorch --display-name "Python 3.12 (torch)"
 ```
 3. Start Jupyter Notebook by running:
