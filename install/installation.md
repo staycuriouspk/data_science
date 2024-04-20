@@ -55,6 +55,10 @@ Miniconda is a lightweight, minimal installer for the Conda package manager. It 
 4. (Optional) During the installation process, you can choose to add Miniconda to your system's PATH environment variable. This will allow you to use conda commands from any directory in your terminal or command prompt.
 5. After the installation is complete, you may need to restart your terminal or command prompt for the changes to take effect.
 6. To verify the installation, open your terminal or command prompt and type `conda --version`. If the installation was successful, you should see the version of Conda displayed.
+7. After installing Miniconda, we will first install Jupyter, which is a code editor that we will use in this course. Open your terminal and run the following command:
+```
+conda install -y jupyter
+```
 
 ### macOS
 
@@ -64,6 +68,10 @@ Miniconda is a lightweight, minimal installer for the Conda package manager. It 
 4. (Optional) During the installation process, you can choose to add Miniconda to your system's PATH environment variable. This will allow you to use conda commands from any directory in your terminal.
 5. After the installation is complete, you may need to restart your terminal for the changes to take effect.
 6. To verify the installation, open your terminal and type `conda --version`. If the installation was successful, you should see the version of Conda displayed.
+7. After installing Miniconda, we will first install Jupyter, which is a code editor that we will use in this course. Open your terminal and run the following command:
+```
+conda install -y jupyter
+```
 
 ## Creating a New Environment
 
@@ -99,11 +107,8 @@ jupyter notebook
 ```python
 import sys
 print(f"Python version: {sys.version}")
-
-import numpy
-print(f"NumPy version: {numpy.__version__}")
 ```
 
-If you see the expected versions of Python and NumPy, your environment is set up correctly.
+If you see the expected version of Python, your environment is set up correctly.
 
 Please refer to the official documentation of these package managers for more
