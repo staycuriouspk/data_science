@@ -57,10 +57,6 @@ Miniconda is a lightweight, minimal installer for the Conda package manager. It 
 4. (Optional) During the installation process, you can choose to add Miniconda to your system's PATH environment variable. This will allow you to use conda commands from any directory in your terminal or command prompt.
 5. After the installation is complete, you may need to restart your terminal or command prompt for the changes to take effect.
 6. To verify the installation, open your terminal or command prompt and type `conda --version`. If the installation was successful, you should see the version of Conda displayed.
-7. After installing Miniconda, we will first install Jupyter, which is a code editor that we will use in this course. Open your terminal and run the following command:
-```
-conda install -y jupyter
-```
 
 ### macOS
 
@@ -70,10 +66,6 @@ conda install -y jupyter
 4. (Optional) During the installation process, you can choose to add Miniconda to your system's PATH environment variable. This will allow you to use conda commands from any directory in your terminal.
 5. After the installation is complete, you may need to restart your terminal for the changes to take effect.
 6. To verify the installation, open your terminal and type `conda --version`. If the installation was successful, you should see the version of Conda displayed.
-7. After installing Miniconda, we will first install Jupyter, which is a code editor that we will use in this course. Open your terminal and run the following command:
-```
-conda install -y jupyter
-```
 
 ## Creating a New Environment
 
@@ -98,13 +90,18 @@ You can now install any packages you need for your project within this environme
 
 To ensure that your environment is set up correctly, you can run the following commands:
 
-1. Start Jupyter Notebook by running:
+1. We will first install Jupyter, which is a code editor that we will use in this course. Open your terminal and run the following command:
+```
+conda install -y jupyter
+```
+
+2. Start Jupyter Notebook by running:
 
 ```
 jupyter notebook
 ```
 
-2. In the Jupyter Notebook, you can run the following code to check the versions of the packages installed:
+3. In the Jupyter Notebook, you can run the following code to check the versions of the packages installed:
 
 ```python
 import sys
