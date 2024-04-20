@@ -10,7 +10,7 @@
    - [Windows](#windows-1)
    - [macOS](#macos-1)
 4. [Creating a New Environment](#creating-a-new-environment)
-5. [Register & Test Your Environment](#register-&-test-your-environment)
+5. [Register & Test Your Environment](#register--test-your-environment)
 
 
 ## Introduction
