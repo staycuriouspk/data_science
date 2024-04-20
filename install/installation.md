@@ -10,7 +10,7 @@
    - [Windows](#windows-1)
    - [macOS](#macos-1)
 4. [Creating a New Environment](#creating-a-new-environment)
-5. [Register & Test Your Environment](#register--test-your-environment)
+5. [Test Your Environment](#test-your-environment)
 
 
 ## Introduction
@@ -71,20 +71,18 @@ After installing Anaconda or Miniconda, you can create a new environment for you
 
 1. Open your terminal or command prompt.
 2. Run the following command to create a new environment named `torch`:
-
 ```
 conda create --name torch
 ```
 
 3. To activate the new environment, run:
-
 ```
 conda activate torch
 ```
 
 You can now install any packages you need for your project within this environment without affecting your base installation.
 
-## Register & Test Your Environment
+## Test Your Environment
 
 To ensure that your environment is set up correctly, you can run the following commands, make sure you "conda activate" your new environment.
 
@@ -92,16 +90,11 @@ To ensure that your environment is set up correctly, you can run the following c
 ```
 conda install -y jupyter
 ```
-2. The following command registers your environment.
-```
-python -m ipykernel install --user --name pytorch --display-name "Python 3.12 (torch)"
-```
-3. Start Jupyter Notebook by running:
+2. Start Jupyter Notebook by running:
 ```
 jupyter notebook
 ```
-4. In the Jupyter Notebook, you can run the following code to check the version of the python installed:
-
+3. In the Jupyter Notebook, you can run the following code to check the version of the python installed:
 ```python
 import sys
 print(f"Python version: {sys.version}")
