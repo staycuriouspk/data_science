@@ -39,7 +39,7 @@ Anaconda is a free, open-source distribution that includes Python, the conda pac
 ### macOS
 
 1. Visit the official Anaconda website: https://www.anaconda.com/products/distribution
-2. Download the Anaconda installer for macOS.
+2. Download the Anaconda installer for macOS that matches your Mac's processor (M1/M2 or Intel)
 3. Run the installer and follow the on-screen instructions.
 4. (Optional) During the installation process, you can choose to add Anaconda to your system's PATH environment variable. This will allow you to use conda commands from any directory in your terminal.
 5. After the installation is complete, you may need to restart your terminal for the changes to take effect.
@@ -52,7 +52,7 @@ Miniconda is a lightweight, minimal installer for the Conda package manager. It 
 ### Windows
 
 1. Visit the official Miniconda website: https://docs.conda.io/en/latest/miniconda.html
-2. Download the Miniconda installer for Windows.
+2. Download the Miniconda installer for Windows, ensure that the installer name ends with 'pkg'.
 3. Run the installer and follow the on-screen instructions.
 4. (Optional) During the installation process, you can choose to add Miniconda to your system's PATH environment variable. This will allow you to use conda commands from any directory in your terminal or command prompt.
 5. After the installation is complete, you may need to restart your terminal or command prompt for the changes to take effect.
@@ -65,7 +65,7 @@ conda install -y jupyter
 ### macOS
 
 1. Visit the official Miniconda website: https://docs.conda.io/en/latest/miniconda.html
-2. Download the Miniconda installer for macOS.
+2. Download the Miniconda installer for macOS that matches your Mac's processor (M1/M2 or Intel), also ensure that the installer name ends with 'pkg'.
 3. Run the installer and follow the on-screen instructions.
 4. (Optional) During the installation process, you can choose to add Miniconda to your system's PATH environment variable. This will allow you to use conda commands from any directory in your terminal.
 5. After the installation is complete, you may need to restart your terminal for the changes to take effect.
