@@ -10,9 +10,7 @@
    - [Windows](#windows-1)
    - [macOS](#macos-1)
 4. [Creating a New Environment](#creating-a-new-environment)
-5. [Testing Your Environment](#testing-your-environment)
-6. [Register Your Environment](#register-your-environment)
-7. [Testing Your Registered Environment](#testing-your-registered-environment)
+5. [Register & Test Your Environment](#register-&-test-your-environment)
 
 
 ## Introduction
@@ -86,67 +84,28 @@ conda activate torch
 
 You can now install any packages you need for your project within this environment without affecting your base installation.
 
-## Testing Your Environment
+## Register & Test Your Environment
 
-To ensure that your environment is set up correctly, you can run the following commands:
+To ensure that your environment is set up correctly, you can run the following commands, make sure you "conda activate" your new environment.
 
 1. We will first install Jupyter, which is a code editor that we will use in this course. Open your terminal and run the following command:
 ```
 conda install -y jupyter
 ```
-
-2. Start Jupyter Notebook by running:
-
+2. The following command registers your environment.
+``
+python -m ipykernel install --user --name pytorch --display-name "Python 3.12 (torch)"
+```
+3. Start Jupyter Notebook by running:
 ```
 jupyter notebook
 ```
-
-3. In the Jupyter Notebook, you can run the following code to check the versions of the packages installed:
+4. In the Jupyter Notebook, you can run the following code to check the version of the python installed:
 
 ```python
 import sys
 print(f"Python version: {sys.version}")
 ```
-
 If you see the expected version of Python, your environment is set up correctly.
 
-Please refer to the official documentation of these package managers for more
-
-## Register Your Environment
-
-The following command registers your environment. Again, make sure you "conda activate" your new environment.
-```
-python -m ipykernel install --user --name pytorch --display-name "Python 3.11 (torch)"
-```
-
-## Testing Your Registered Environment
-You can now start Jupyter notebook. Use the following command.
-
-```
-jupyter notebook
-```
-You can now run the following code to check that you have the versions expected.
-
-```python
-# What version of Python do you have?
-import sys
-import platform
-import torch
-import pandas as pd
-import sklearn as sk
-
-has_gpu = torch.cuda.is_available()
-has_mps = torch.backends.mps.is_built()
-device = "mps" if has_mps else "cuda" if torch.cuda.is_available() else "cpu"
-
-print(f"Python Platform: {platform.platform()}")
-print(f"PyTorch Version: {torch.__version__}")
-print()
-print(f"Python {sys.version}")
-print(f"Pandas {pd.__version__}")
-print(f"Scikit-Learn {sk.__version__}")
-print("NVIDIA/CUDA GPU is", "available" if has_gpu else "NOT AVAILABLE")
-print("MPS (Apple Metal) is", "AVAILABLE" if has_mps else "NOT AVAILABLE")
-print(f"Target device is {device}")
-```
-
+Please refer to the official documentation of these package managers for more.
