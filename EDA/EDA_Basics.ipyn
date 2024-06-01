@@ -1,0 +1,184 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Introduction to Data Preprocessing\n",
+    "\n",
+    "## Importance of Data Quality\n",
+    "Data quality is crucial because the performance of machine learning models depends heavily on the quality of the data used for training. Poor quality data can lead to inaccurate models, misleading conclusions, and suboptimal decision-making. High-quality data should be accurate, complete, consistent, and relevant.\n",
+    "\n",
+    "Key aspects of data quality include:\n",
+    "1. Accuracy: Correctness of data values.\n",
+    "2. Completeness: All necessary data is present.\n",
+    "3. Consistency: Data should be consistent across different sources.\n",
+    "4. Relevance: Data should be relevant to the problem being solved.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "from scipy.ndimage import gaussian_filter"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Load the COVID-19 Dataset\n",
+    "We'll use the COVID-19 dataset available on Kaggle. This dataset contains information about COVID-19 cases, including country-wise statistics.\n",
+    "\n",
+    "Link to the dataset: [COVID-19 Dataset](https://www.kaggle.com/imdevskp/corona-virus-report)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Load the COVID-19 dataset\n",
+    "url = \"https://raw.githubusercontent.com/datasets/covid-19/main/data/countries-aggregated.csv\"\n",
+    "df = pd.read_csv(url)\n",
+    "\n",
+    "# Display the first few rows of the dataset\n",
+    "print(\"First few rows of the COVID-19 dataset:\")\n",
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Common Data Issues\n",
+    "\n",
+    "### 1. Missing Values\n",
+    "Missing values can occur due to various reasons like data entry errors, sensor malfunction, or data corruption. It's essential to handle missing values appropriately to avoid bias and inaccuracies in the model.\n",
+    "\n",
+    "Example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Checking for missing values\n",
+    "print(\"\\nMissing values in each column:\")\n",
+    "print(df.isnull().sum())\n",
+    "\n",
+    "# Since there are no missing values in this dataset, we'll simulate some missing values for demonstration\n",
+    "df_missing = df.copy()\n",
+    "df_missing.loc[0:10, 'Confirmed'] = np.nan\n",
+    "\n",
+    "# Handling missing values by imputation\n",
+    "df_missing['Confirmed'].fillna(df_missing['Confirmed'].mean(), inplace=True)\n",
+    "\n",
+    "print(\"\\nData after handling missing values:\")\n",
+    "print(df_missing.isnull().sum())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2. Outliers\n",
+    "Outliers are data points that differ significantly from other observations. They can distort statistical analyses and models if not handled properly.\n",
+    "\n",
+    "Example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Visualizing outliers in the 'Confirmed' cases using box plot\n",
+    "plt.figure(figsize=(10, 6))\n",
+    "sns.boxplot(x=df['Confirmed'])\n",
+    "plt.title(\"Box plot of Confirmed Cases with outliers\")\n",
+    "plt.show()\n",
+    "\n",
+    "# Handling outliers by capping\n",
+    "q1 = df['Confirmed'].quantile(0.25)\n",
+    "q3 = df['Confirmed'].quantile(0.75)\n",
+    "iqr = q3 - q1\n",
+    "lower_bound = q1 - 1.5 * iqr\n",
+    "upper_bound = q3 + 1.5 * iqr\n",
+    "\n",
+    "df['Confirmed'] = np.where(df['Confirmed'] > upper_bound, upper_bound, np.where(df['Confirmed'] < lower_bound, lower_bound, df['Confirmed']))\n",
+    "\n",
+    "print(\"\\nData after capping outliers in Confirmed Cases:\")\n",
+    "plt.figure(figsize=(10, 6))\n",
+    "sns.boxplot(x=df['Confirmed'])\n",
+    "plt.title(\"Box plot of Confirmed Cases after capping outliers\")\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3. Noise\n",
+    "Noise refers to random variations in data that can obscure patterns. It can result from errors in data collection or processing. Smoothing techniques can help reduce noise.\n",
+    "\n",
+    "Example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Sample noisy signal\n",
+    "np.random.seed(0)\n",
+    "time = np.linspace(0, 4*np.pi, 500)\n",
+    "signal = np.sin(time) + np.random.normal(0, 0.2, 500)\n",
+    "\n",
+    "plt.plot(time, signal, label='Noisy Signal')\n",
+    "plt.title(\"Noisy Signal\")\n",
+    "plt.legend()\n",
+    "plt.show()\n",
+    "\n",
+    "# Reducing noise using Gaussian filter\n",
+    "smoothed_signal = gaussian_filter(signal, sigma=2)\n",
+    "plt.plot(time, smoothed_signal, label='Smoothed Signal')\n",
+    "plt.title(\"Smoothed Signal\")\n",
+    "plt.legend()\n",
+    "plt.show()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.10"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
